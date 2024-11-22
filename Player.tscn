@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dye5ei2h6ow83"]
+
+[ext_resource type="Texture2D" uid="uid://bq400ay7qxdxv" path="res://Assets/Birds/bird1.png" id="1_vbdpv"]
+[ext_resource type="Texture2D" uid="uid://cit632filmvki" path="res://Assets/Birds/bird2.png" id="2_84o3y"]
+[ext_resource type="Texture2D" uid="uid://dvm1ofut1btgh" path="res://Assets/Birds/bird3.png" id="3_s48hx"]
+[ext_resource type="Texture2D" uid="uid://cprh1a0tss43b" path="res://Assets/Birds/bird4.png" id="4_8kna1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hs8y8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vbdpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_84o3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s48hx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8kna1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3r8au"]
+radius = 16.1245
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(351, 411)
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_hs8y8")
+frame_progress = 0.886991
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_3r8au")
