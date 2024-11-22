@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2ijqwgbpvfjw"]
+
+[ext_resource type="Script" path="res://Scripts/Obstacles.cs" id="1_ap16i"]
+[ext_resource type="Texture2D" uid="uid://bpue1lpwwjh5" path="res://Assets/Obstacles/log.png" id="2_3epia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ixaj"]
+size = Vector2(98, 510)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84dld"]
+size = Vector2(31, 311)
+
+[node name="Obstacles" type="Area2D"]
+script = ExtResource("1_ap16i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(612, 78)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3epia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(620, 74)
+shape = SubResource("RectangleShape2D_3ixaj")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(622, 922)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3epia")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(629, 917)
+shape = SubResource("RectangleShape2D_3ixaj")
+
+[node name="ScoreZone" type="Area2D" parent="."]
+position = Vector2(666, 498)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
+position = Vector2(2, -2)
+shape = SubResource("RectangleShape2D_84dld")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

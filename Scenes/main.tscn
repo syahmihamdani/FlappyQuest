@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bru221s5etfu3"]
+
+[ext_resource type="PackedScene" uid="uid://djbt3enf54ec7" path="res://Scenes/Background.tscn" id="1_43voq"]
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_hwd6c"]
+[ext_resource type="PackedScene" uid="uid://dye5ei2h6ow83" path="res://Scenes/Player.tscn" id="2_aorvi"]
+[ext_resource type="PackedScene" uid="uid://63xhv1rmq4yx" path="res://Scenes/ground.tscn" id="4_6fqpi"]
+[ext_resource type="PackedScene" uid="uid://cip1flu4mkqk2" path="res://Scenes/game_over.tscn" id="5_lth4s"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_hwd6c")
+
+[node name="Background" parent="." instance=ExtResource("1_43voq")]
+
+[node name="Player" parent="." instance=ExtResource("2_aorvi")]
+
+[node name="Ground" parent="." instance=ExtResource("4_6fqpi")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_right = 61.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+
+[node name="GameOver" parent="." instance=ExtResource("5_lth4s")]
+visible = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

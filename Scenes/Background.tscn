@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Background.cs" id="1_fdt2n"]
 [ext_resource type="Texture2D" uid="uid://7r2idvlq4ajq" path="res://Assets/Background/PNG/game_background_1/game_background_1.png" id="1_w413y"]
-[ext_resource type="PackedScene" uid="uid://dye5ei2h6ow83" path="res://Player.tscn" id="3_ubn5u"]
+[ext_resource type="PackedScene" uid="uid://d2ijqwgbpvfjw" path="res://Scenes/obstacles.tscn" id="3_wu2pq"]
 
 [node name="Background" type="ParallaxBackground"]
 script = ExtResource("1_fdt2n")
+obstacleScene = ExtResource("3_wu2pq")
 
 [node name="Background" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(1920, 0)
@@ -14,4 +15,14 @@ motion_mirroring = Vector2(1920, 0)
 position = Vector2(961, 538)
 texture = ExtResource("1_w413y")
 
-[node name="Node2D" parent="." instance=ExtResource("3_ubn5u")]
+[node name="Obstacles" parent="Background" instance=ExtResource("3_wu2pq")]
+position = Vector2(393, 68)
+
+[node name="Obstacles2" parent="Background" instance=ExtResource("3_wu2pq")]
+position = Vector2(991, 178)
+
+[node name="Obstacles3" parent="Background" instance=ExtResource("3_wu2pq")]
+position = Vector2(1690, 144)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0

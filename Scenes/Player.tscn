@@ -22,25 +22,24 @@ animations = [{
 "texture": ExtResource("4_8kna1")
 }],
 "loop": true,
-"name": &"run",
+"name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yshxo"]
 radius = 15.0333
 
-[node name="Node2D" type="Node2D"]
+[node name="Player" type="Node2D"]
 position = Vector2(287, 355)
 
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 script = ExtResource("1_h0fpl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-scale = Vector2(2, 2)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_i8t80")
-animation = &"run"
-frame_progress = 0.330853
+frame_progress = 0.489027
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(2, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_yshxo")

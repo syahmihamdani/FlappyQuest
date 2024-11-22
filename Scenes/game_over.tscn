@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cip1flu4mkqk2"]
+
+[ext_resource type="Script" path="res://Scripts/GameOver.cs" id="1_c0lau"]
+[ext_resource type="Texture2D" uid="uid://cgjdxpmabwotp" path="res://Assets/GUI/Button/Default@2x.png" id="2_4r6o2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dqil5"]
+texture = ExtResource("2_4r6o2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2w4g"]
+texture = ExtResource("2_4r6o2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vfew"]
+texture = ExtResource("2_4r6o2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_suixt"]
+texture = ExtResource("2_4r6o2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m2ka7"]
+texture = ExtResource("2_4r6o2")
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_c0lau")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_dqil5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_t2w4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8vfew")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_suixt")
+theme_override_styles/normal = SubResource("StyleBoxTexture_m2ka7")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

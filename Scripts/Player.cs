@@ -4,17 +4,20 @@ using System;
 public partial class Player : RigidBody2D
 {
 	[Export] float jumpPower = 350f; // Kekuatan flapping dari birdnya
-	//[Export] float resetTimer = 1f; 
+									 //[Export] float resetTimer = 1f; 
 
 	private AnimatedSprite2D sprite;
 
-	private Vector2 jumpImpulse = new Vector2();	//impuls dari flapping, agar bird bisa flap dengan baik
+	private Vector2 jumpImpulse = new Vector2();    //impuls dari flapping, agar bird bisa flap dengan baik
+
+	private Main mainScene;
 
 	public override void _Ready()
 	{
+		mainScene = GetNode<Main>("/root/Main");
 		jumpImpulse.Y = -jumpPower; // set axis y pada impuls dengan negatif agar bird lompat ke atas
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		sprite.Play("run");	//memastikan animasi berjalan
+		sprite.Play("run"); //memastikan animasi berjalan
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -24,6 +27,8 @@ public partial class Player : RigidBody2D
 
 		// mempertahankan velocity x, juga velocity y nya
 		LinearVelocity = new Vector2(0, LinearVelocity.Y);
+
+		checkTop();
 	}
 
 	public override void _Input(InputEvent @event)
@@ -33,8 +38,19 @@ public partial class Player : RigidBody2D
 		if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.Space)
 		{
 			Jump();
+
 		}
 	}
+
+	void checkTop()
+	{;
+		if (Position.Y < 0)
+		{
+			mainScene.stop_game();
+		}
+	}
+
+
 
 	private void Jump()
 	{
